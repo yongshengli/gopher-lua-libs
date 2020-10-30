@@ -91,7 +91,7 @@ func NodeToString(L *lua.LState) int {
 }
 
 // Load lua xmlpath.load(xmlpath string) return (xmlpath_node_ud, err)
-func Load(L *lua.LState) int {
+func LoadXml(L *lua.LState) int {
 	xmlpathStr := L.CheckString(1)
 	r := bytes.NewReader([]byte(xmlpathStr))
 	node, err := xmlpath.Parse(r)
@@ -103,7 +103,19 @@ func Load(L *lua.LState) int {
 	L.Push(newLuaNode(L, node))
 	return 1
 }
-
+// Load lua xmlpath.load(xmlpath string) return (xmlpath_node_ud, err)
+func Load(L *lua.LState) int {
+	xmlpathStr := L.CheckString(1)
+	r := bytes.NewReader([]byte(xmlpathStr))
+	node, err := xmlpath.ParseHTML(r)
+	if err != nil {
+		L.Push(lua.LNil)
+		L.Push(lua.LString(err.Error()))
+		return 2
+	}
+	L.Push(newLuaNode(L, node))
+	return 1
+}
 // Compile lua xmlpath.compile(xpath string) return (xmlpath_path_ud, err)
 func Compile(L *lua.LState) int {
 	xpathStr := L.CheckString(1)
