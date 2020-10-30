@@ -94,7 +94,7 @@ func NodeToString(L *lua.LState) int {
 func Load(L *lua.LState) int {
 	xmlpathStr := L.CheckString(1)
 	r := bytes.NewReader([]byte(xmlpathStr))
-	node, err := xmlpath.ParseHTML(r)
+	node, err := xmlpath.Parse(r)
 	if err != nil {
 		L.Push(lua.LNil)
 		L.Push(lua.LString(err.Error()))
