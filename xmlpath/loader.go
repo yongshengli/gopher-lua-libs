@@ -41,5 +41,6 @@ func Loader(L *lua.LState) int {
 
 var api = map[string]lua.LGFunction{
 	"load":    Load,
+	"loadXml":    LoadXml,
 	"compile": Compile,
 }
