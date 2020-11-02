@@ -32,7 +32,7 @@ import (
 	"github.com/vadv/gopher-lua-libs/telegram"
 	"github.com/vadv/gopher-lua-libs/template"
 	lua_time "github.com/vadv/gopher-lua-libs/time"
-	"github.com/vadv/gopher-lua-libs/xmlpath"
+	"github.com/yongshengli/gopher-lua-libs/xmlpath"
 	"github.com/vadv/gopher-lua-libs/yaml"
 	"github.com/vadv/gopher-lua-libs/zabbix"
 
