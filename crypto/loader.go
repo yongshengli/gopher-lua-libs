@@ -23,4 +23,5 @@ func Loader(L *lua.LState) int {
 var api = map[string]lua.LGFunction{
 	"md5":    MD5,
 	"sha256": SHA256,
+	"hmac":HMAC
 }
